@@ -1,9 +1,19 @@
 // DEPENDENCIES
 const express = require('express');
 const path = require('path');
+const mysql = require('mysql');
 // GLOBAL VARIABLES
 const app = express();
 const PORT = 3000;
+
+var login = require('./login.js');
+
+const connection = mysql.createConnection({ login });
+
+connection.connect(function(){
+  console.log("Listening at DB")
+});
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 

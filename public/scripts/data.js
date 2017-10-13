@@ -1,4 +1,4 @@
-const colors = ['Blue', 'Green', 'Red', 'Yellow', 'Purble', 'Pink', 'Orange'];
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink'];
 
 const inventory = [
   {
@@ -79,12 +79,22 @@ function loadStyles(selection){
 }
 
 function loadColors(){
+  $('#colorRow').empty();
 
+  for(var i=0;i <colors.length; i++){
+
+    let color=$('<button>');
+    color.addClass('btn btn-default color '+colors[i]);
+    color.text(colors[i]);
+    color.attr('color-type', colors[i]);
+    $('#colorRow').append(color);
+  }
 }
 
 $(document).ready(function(){
 
   loadSelectors();
+
 
   $('body').on("click",'.selector', function(e){
     e.preventDefault();
@@ -112,7 +122,17 @@ $(document).ready(function(){
     newRequest.text(newstyle);
     $('#requests').append(newRequest);
     proof.push(newstyle);
+    loadColors();
+  });
 
+  $('body').on('click', '.color', function(e){
+    e.preventDefault();
+
+    let newColor = $(this).text();
+    let newRequest = $('<li>');
+    newRequest.text(newColor);
+    $('#requests').append(newRequest);
+    proof.push(newColor);
   });
 
   $('#reset').on('click', function(e){
@@ -125,6 +145,12 @@ $(document).ready(function(){
 
 
   });
+
+  $('#submit').on('click', function(e){
+    e.preventDefault();
+
+    console.log(proof);
+  })
 
 
 

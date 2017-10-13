@@ -38,3 +38,47 @@ label{
   vertical-align: top;
 
 }
+
+.color{
+  margin: 5px 5px 5px 5px;
+}
+
+#colorRow{
+  margin-top: 30px;
+}
+
+
+.Blue{
+  background-color: #30b5e5;
+  border: 1px solid #1e94bf;
+}
+
+.Green{
+  background-color:#6acc78;
+  border: 1px solid #52af60;
+}
+
+.Red{
+  background-color:#e56b6b;
+  border: 1px solid #af4949;
+}
+
+.Yellow{
+  background-color: #f4ee42;
+  border: 1px solid #cec92f;
+}
+
+.Purple{
+  background-color: #c775ff;
+  border: 1px solid #9f2ec1;
+}
+
+.Orange{
+  background-color: #ed9040;
+  border: 1px solid #b2601a;
+}
+
+.Pink{
+  background-color: #fc97fa;
+  border: 1px solid #d85db3;
+}
