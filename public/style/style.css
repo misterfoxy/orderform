@@ -1,0 +1,40 @@
+ul{
+  list-style-type: none;
+}
+
+
+.selector, .style{
+  margin: 10px 20px 10px 20px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 100px;
+  box-shadow: 1px 2px;
+
+
+}
+.selector:hover, .style:hover{
+  color:white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+#final{
+  margin-top: 50px;
+}
+
+.user-input{
+  width:50%;
+  display: inline-block;
+  text-align: center;
+
+}
+
+label{
+  margin-bottom: 10px;
+}
+#proofinput{
+  height: 100px;
+  vertical-align: top;
+
+}

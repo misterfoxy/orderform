@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>KAlVE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../scripts/data.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+
+      <div class="row text-center">
+
+        <div class="col-md-12">
+          <h1>ORDER FORM</h1>
+          <a href="/"><p>ABOUT KALVE</p></a>
+          <p>now delivering in tempe, arizona</p>
+          <button class='btn btn-warning' id='reset'>RESET</button>
+        </div>
+
+      </div>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <div class="RequestHead">
+            <h3>REQUESTS</h3>
+            <hr>
+            <ul id="requests">
+
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-9" id="userSelection">
+          <div class="selectHead">
+            <h3>OPTIONS</h3>
+            <hr>
+          </div>
+
+          <div id="selectors">
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row" id="final">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-9 center-block text-center">
+          <div class="form-group user-input">
+            <label for="EXTRA DETAILS">Additional Details for the Design Team</label>
+            <textarea type="text" class="form-control" id="proofinput" placeholder="I attached the style I like, but I want 'X' State instead of 'Y' University "></textarea>
+            <p class="help-block">Describe to us how this design will look on the item</p>
+          </div>
+          <br>
+          <div class="form-group user-input">
+            <label for="EXTRA DETAILS">Enter your Email</label>
+            <input type="text" class="form-control" id="email" placeholder="mclovin@dartmouth.edu"></input>
+
+          </div>
+          <br>
+          <button class="btn-success btn">SUBMIT</button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
