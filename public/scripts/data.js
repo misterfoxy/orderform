@@ -1,4 +1,4 @@
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink'];
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Purple', 'Pink', 'Black', 'White', 'Gray'];
 
 const inventory = [
   {
@@ -49,10 +49,11 @@ function loadSelectors(){
 
 }
 
-function checkNotSelected(selection){
+function disableCat(selection){
   for (var i =0; i<inventory.length; i++){
 
       $('.selector').addClass('disabled');
+      $('.selector').attr('disabled', 'disabled');
 
   }
 }
@@ -68,7 +69,7 @@ function loadStyles(selection){
       for (var j = 0; j<styleArr.length; j++){
 
         let newStyle = $('<button>');
-        newStyle.addClass('btn btn-danger btn-large style');
+        newStyle.addClass('btn btn-danger btn-lg style');
         newStyle.text(styleArr[j]);
         newStyle.attr('style', styleArr[j]);
         $('#selectors').append(newStyle);
@@ -76,6 +77,13 @@ function loadStyles(selection){
       $('#selectors').append('<br>');
     }
   }
+}
+
+function disableStyle(styles){
+
+    $('.style').addClass('disabled');
+    $('.style').attr('disabled', 'disabled');
+
 }
 
 function loadColors(){
@@ -101,7 +109,7 @@ $(document).ready(function(){
 
     let selection = $(this).text();
     console.log(selection);
-    checkNotSelected(selection);
+    disableCat(selection);
 
     let newRequest = $('<li>');
     newRequest.text(selection);
@@ -115,9 +123,11 @@ $(document).ready(function(){
   $('body').on('click', '.style', function(e){
     e.preventDefault();
 
+
     let newstyle = $(this).text();
     console.log(newstyle);
 
+    disableStyle();
     let newRequest = $('<li>');
     newRequest.text(newstyle);
     $('#requests').append(newRequest);
@@ -149,8 +159,34 @@ $(document).ready(function(){
   $('#submit').on('click', function(e){
     e.preventDefault();
 
-    console.log(proof);
-  })
+    // create object for order proof to submit to database
+    let category = proof[0];
+    let style = proof[1];
+    let color = proof[2];
+    let contact = $('#email').val().trim();
+    let user_input = $('#proofinput').val().trim();
+
+    let newEntry = {
+      contact: contact,
+      color: color,
+      category: category,
+      style: style,
+      user_input: user_input
+    };
+    console.log(newEntry);
+
+    $.ajax({
+      url: '/data',
+      type: 'POST',
+      data: newEntry,
+      success: function(result){
+        console.log("POSTED");
+      }
+
+
+    });
+
+  });
 
 
 

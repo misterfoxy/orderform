@@ -47,6 +47,11 @@ label{
   margin-top: 30px;
 }
 
+.color:hover{
+  background-color: white;
+  border: 1px solid black;
+  color:black;
+}
 
 .Blue{
   background-color: #30b5e5;
@@ -81,4 +86,20 @@ label{
 .Pink{
   background-color: #fc97fa;
   border: 1px solid #d85db3;
+}
+
+.Black{
+  background-color: black;
+  border:1px solid #111;
+  color:white;
+}
+
+.White{
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+.Gray{
+  background-color: #777777;
+  border: 1px solid #282828;
 }
