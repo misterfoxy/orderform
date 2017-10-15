@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const login = require('./login.js');
@@ -49,7 +49,7 @@ app.get('/admin', function(req,res){
 });
 
 app.post('/data', function(req, res){
-  let entry = req.body.newEntry;
+  let entry = req.body;
   console.log(entry);
   res.contentType('json');
   res.send({ some: JSON.stringify({response:'json'}) });
@@ -58,8 +58,8 @@ app.post('/data', function(req, res){
       throw err;
     }
     console.log(result);
+    connection.end();
   });
-  connection.end();
 });
 // INITIATE SERVER
 app.listen(process.env.PORT || PORT, function(){

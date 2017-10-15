@@ -200,23 +200,11 @@ $(document).ready(function(){
     };
 
 
-    $.ajax({
-      url: '/data',
-      type: 'POST',
-      dataType: "json",
-      data: newEntry,
-      contentType: "application/json",
-      complete: function(){
-        console.log("Process completed");
-      },
-      success: function(result){
-        console.log(result)
-        console.log("POSTED");
-      },
-      error: function(err){
-        console.log(err);
-      }
-    });
+    $.post('/data', newEntry, function(data, status){
+        console.log("Data: " + data);
+        console.log("Status: " + status);
+
+      });
 
   });
 
