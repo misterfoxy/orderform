@@ -1,7 +1,35 @@
-ul{
-  list-style-type: none;
+#mainLogo{
+  color:#fefefe;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 20px;
 }
 
+.startProof{
+  background-color: white;
+  border: 2px solid black;
+  color:black;
+  width:20%;
+  padding: 7.5px 5px 7.5px 5px;
+  font-size: 16px;
+}
+
+.startProof:hover{
+  background-color: #111;
+  border: 2px solid #efefef;
+  color:white;
+}
+ul{
+  list-style-type: none;
+
+}
+li{
+  font-size: 26px;
+}
+
+p{
+  font-size: 18px;
+  font-family: "Hind", sans-serif;
+}
 
 .selector, .style{
   margin: 10px 20px 10px 20px;
@@ -11,12 +39,44 @@ ul{
   border-radius: 100px;
   box-shadow: 1px 2px;
 
-
 }
+
 .selector:hover, .style:hover{
   color:white;
   background-color: black;
   border: 1px solid white;
+}
+
+#aboutKalve{
+  margin-top: 40px;
+  color:#fefefe;
+  font-size: 32px;
+  font-family: 'Cabin', sans-serif;
+  text-shadow: 0.5px 0.5px black;
+
+}
+.mission1body{
+  margin-top: 50px;
+}
+.mission2body{
+  margin-top: 50px;
+}
+#mission1Header{
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color:#fefefe;
+    font-size: 48px;
+    font-family: 'Cabin', sans-serif;
+}
+
+#mission2Header{
+  margin-bottom: 30px;
+  margin-right: 40px;
+  margin-top: 40px;
+  color:#fefefe;
+  font-size: 48px;
+  font-family: 'Cabin', sans-serif;
 }
 
 #final{
@@ -33,12 +93,22 @@ ul{
 label{
   margin-bottom: 10px;
 }
+
 #proofinput{
   height: 100px;
   vertical-align: top;
-
 }
 
+#requests{
+  padding: 10px 10px 10px 10px;
+  text-align:left;
+  background-color: #7fd9f9;
+  color: #f9f7f7;
+  text-shadow: 1px 1px #f9c43b;
+  border: 5px solid #555;
+  border-radius: 5px;
+  box-shadow: 3px 5px #555;
+}
 .color{
   margin: 5px 5px 5px 5px;
 }
@@ -102,4 +172,14 @@ label{
 .Gray{
   background-color: #777777;
   border: 1px solid #282828;
+}
+
+footer{
+  color:white;
+}
+a{
+  color:white;
+}
+a:hover{
+  color:#30b5e5;
 }

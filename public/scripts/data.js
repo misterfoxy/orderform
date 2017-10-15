@@ -35,13 +35,15 @@ const inventory = [
 
 let proof = [];
 
+
+
 function loadSelectors(){
   $('#selectors').empty();
 
   for (var i =0; i<inventory.length; i++){
     let newSelector = $('<button>');
     newSelector.addClass('btn btn-lg btn-danger selector');
-    newSelector.text(inventory[i].id);
+    newSelector.html(inventory[i].id);
     newSelector.attr('category', inventory[i].id);
     $('#selectors').append(newSelector);
   }
@@ -50,13 +52,16 @@ function loadSelectors(){
 }
 
 function disableCat(selection){
-  for (var i =0; i<inventory.length; i++){
+  let attr = $(this).attr('category');
 
+  for (var i =0; i<inventory.length; i++){
+    if(attr !== inventory[i].id){
       $('.selector').addClass('disabled');
       $('.selector').attr('disabled', 'disabled');
-
+    }
   }
 }
+
 
 
 function loadStyles(selection){
@@ -86,6 +91,11 @@ function disableStyle(styles){
 
 }
 
+function disableColor(){
+  $('.color').addClass('disabled');
+  $('.color').attr('disabled', 'disabled');
+}
+
 function loadColors(){
   $('#colorRow').empty();
 
@@ -104,20 +114,28 @@ $(document).ready(function(){
   loadSelectors();
 
 
+
+
   $('body').on("click",'.selector', function(e){
     e.preventDefault();
 
     let selection = $(this).text();
-    console.log(selection);
-    disableCat(selection);
+    let category = $(this).attr('category');
+
+    console.log(category);
+
+    disableCat(category);
+
+
 
     let newRequest = $('<li>');
-    newRequest.text(selection);
+    newRequest.text("Category: "+ selection);
 
     $('#requests').append(newRequest);
     proof.push(selection);
 
     loadStyles(selection);
+
   });
 
   $('body').on('click', '.style', function(e){
@@ -129,7 +147,7 @@ $(document).ready(function(){
 
     disableStyle();
     let newRequest = $('<li>');
-    newRequest.text(newstyle);
+    newRequest.text("Style: "+ newstyle);
     $('#requests').append(newRequest);
     proof.push(newstyle);
     loadColors();
@@ -138,11 +156,17 @@ $(document).ready(function(){
   $('body').on('click', '.color', function(e){
     e.preventDefault();
 
+
+
     let newColor = $(this).text();
+    console.log(newColor);
     let newRequest = $('<li>');
-    newRequest.text(newColor);
+    newRequest.text("Color: " + newColor);
     $('#requests').append(newRequest);
     proof.push(newColor);
+
+    disableColor();
+
   });
 
   $('#reset').on('click', function(e){
@@ -150,6 +174,7 @@ $(document).ready(function(){
 
     $('#selectors').empty();
     $('#requests').empty();
+    $('#colorRow').empty();
     proof=[];
     loadSelectors();
 
@@ -173,17 +198,24 @@ $(document).ready(function(){
       style: style,
       user_input: user_input
     };
-    console.log(newEntry);
+
 
     $.ajax({
       url: '/data',
       type: 'POST',
+      dataType: "json",
       data: newEntry,
+      contentType: "application/json",
+      complete: function(){
+        console.log("Process completed");
+      },
       success: function(result){
+        console.log(result)
         console.log("POSTED");
+      },
+      error: function(err){
+        console.log(err);
       }
-
-
     });
 
   });

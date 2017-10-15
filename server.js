@@ -12,9 +12,17 @@ app.use(bodyParser.json());
 
 const login = require('./login.js');
 
-const connection = mysql.createConnection({ login });
+const connection = mysql.createConnection({
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  database: 'testdb'
+});
 
-connection.connect(function(){
+connection.connect(function(err, res){
+  if(err){
+    throw err;
+  }
   console.log("Listening at DB")
 });
 
@@ -29,13 +37,27 @@ app.get('/order', function(req, res){
   res.sendFile(path.join(__dirname, 'public/views/order.html'));
 });
 
-app.post('/data', function(req, res){
-  let entry = req.body.entry;
-  connection.query('INSERT INTO orders(contact, color, category, style, user_input) VALUES(?)', entry, function(err, res){
+app.get('/admin', function(req,res){
+
+  connection.query('SELECT * FROM orders', function(err, result){
     if(err){
       throw err;
     }
-    console.log(res);
+    console.log(result);
+  });
+
+});
+
+app.post('/data', function(req, res){
+  let entry = req.body.newEntry;
+  console.log(entry);
+  res.contentType('json');
+  res.send({ some: JSON.stringify({response:'json'}) });
+  connection.query('INSERT INTO orders(contact, color, category, style, user_input) VALUES(?)', entry, function(err, result){
+    if(err){
+      throw err;
+    }
+    console.log(result);
   });
   connection.end();
 });
